@@ -1,6 +1,10 @@
 package main
 
-import "flag"
+import (
+	"flag"
+
+	"github.com/thzoid/ws-game-server/shared"
+)
 
 const (
 	mapWidth  = 8
@@ -8,8 +12,8 @@ const (
 )
 
 var localPlayer = Player{
-	Actor: Actor{
-		position: Coordinate{3, 2},
+	Actor: shared.Actor{
+		Position: shared.Coordinate{X: 3, Y: 2},
 	},
 	velocity: 1,
 }
@@ -29,5 +33,5 @@ func main() {
 		panic("player nick must be a letter or a number")
 	}
 
-	connect(*urlPtr, CtS_HandshakeRequest{Nick: rune((*nickPtr)[0])})
+	connect(*urlPtr, shared.CtS_HandshakeRequest{Nick: rune((*nickPtr)[0])})
 }

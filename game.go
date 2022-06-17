@@ -6,14 +6,16 @@ import (
 
 	tm "github.com/buger/goterm"
 	"github.com/mattn/go-tty"
+
+	"github.com/thzoid/ws-game-server/shared"
 )
 
-func renderMap(size Coordinate) {
+func renderMap(size shared.Coordinate) {
 	tm.MoveCursor(1, 1)
-	for i := 0; i < size.x; i++ {
-		for j := 0; j < size.y; j++ {
+	for i := 0; i < size.X; i++ {
+		for j := 0; j < size.Y; j++ {
 			var char rune
-			if localPlayer.position.Equals(Coordinate{j, i}) {
+			if localPlayer.Actor.Position.Equals(shared.Coordinate{X: j, Y: i}) {
 				char = localPlayer.nick
 			} else {
 				char = '.'
@@ -28,7 +30,7 @@ func renderMap(size Coordinate) {
 func render() {
 	tm.Clear()
 	for range time.Tick(time.Millisecond * 100) {
-		renderMap(Coordinate{mapWidth, mapHeight})
+		renderMap(shared.Coordinate{X: mapWidth, Y: mapHeight})
 	}
 }
 
@@ -38,16 +40,16 @@ func read() {
 		defer tty.Close()
 		for range time.Tick(time.Millisecond * 100) {
 			r, _ := tty.ReadRune()
-			direction := Coordinate{x: 0, y: 0}
+			direction := shared.Coordinate{X: 0, Y: 0}
 			switch r {
 			case 'w':
-				direction.y = -1
+				direction.Y = -1
 			case 'a':
-				direction.x = -1
+				direction.X = -1
 			case 's':
-				direction.y = 1
+				direction.Y = 1
 			case 'd':
-				direction.x = 1
+				direction.X = 1
 			}
 
 			localPlayer.Move(direction)

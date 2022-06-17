@@ -9,6 +9,10 @@ github.com/mattn/go-isatty v0.0.10/go.mod h1:qgIWMr58cqv1PHHyhnkY9lrL7etaEgOFcME
 github.com/mattn/go-runewidth v0.0.7/go.mod h1:H031xJmbD/WCDINGzjvQ9THkh0rPKHF+m2gUSrubnMI=
 github.com/mattn/go-tty v0.0.4 h1:NVikla9X8MN0SQAqCYzpGyXv0jY7MNl3HOWD2dkle7E=
 github.com/mattn/go-tty v0.0.4/go.mod h1:u5GGXBtZU6RQoKV8gY5W6UhMudbR5vXnUe7j3pxse28=
+github.com/thzoid/ws-game-server v0.0.0-20220617163454-e98687644443 h1:LC+sOE/pvzPQ3tAoO7KLWpmzU+TBxePmgFDMnMqmXxQ=
+github.com/thzoid/ws-game-server v0.0.0-20220617163454-e98687644443/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
+github.com/thzoid/ws-game-server v0.0.0-20220617164939-cec20f722f88 h1:GK08fAM8rpuQbHH1gQo556pqdxS4R/n+1pLGQlS6Q0Q=
+github.com/thzoid/ws-game-server v0.0.0-20220617164939-cec20f722f88/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
 golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20191008105621-543471e840be/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20191120155948-bd437916bb0e/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

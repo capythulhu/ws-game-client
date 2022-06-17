@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/websocket"
+	"github.com/thzoid/ws-game-server/shared"
 )
 
 func reader(conn *websocket.Conn) {
@@ -20,7 +21,7 @@ func reader(conn *websocket.Conn) {
 	}
 }
 
-func connect(url string, hsObj CtS_HandshakeRequest) {
+func connect(url string, hs shared.CtS_HandshakeRequest) {
 	conn, _, err := websocket.DefaultDialer.Dial(url, http.Header{})
 	if err != nil {
 		fmt.Println("could not connect to server")
@@ -29,8 +30,8 @@ func connect(url string, hsObj CtS_HandshakeRequest) {
 	fmt.Println("connected to server")
 
 	// Send hanshake to server
-	body, _ := json.Marshal(hsObj)
-	req := Request{
+	body, _ := json.Marshal(hs)
+	req := shared.Request{
 		Type: "hanshake",
 		Body: body,
 	}
