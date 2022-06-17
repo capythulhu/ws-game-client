@@ -1,4 +1,4 @@
-module github.com/thzoid/ws-game/client
+module github.com/thzoid/ws-game-client
 
 go 1.18
 
