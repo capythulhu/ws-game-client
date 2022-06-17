@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -30,12 +29,7 @@ func connect(url string, hs shared.CtS_HandshakeRequest) {
 	fmt.Println("connected to server")
 
 	// Send hanshake to server
-	body, _ := json.Marshal(hs)
-	req := shared.Request{
-		Type: "hanshake",
-		Body: body,
-	}
-	conn.WriteJSON(req)
+	shared.WriteRequest(conn, "handshake", hs)
 
 	reader(conn)
 }
