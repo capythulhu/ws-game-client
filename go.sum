@@ -15,6 +15,12 @@ github.com/thzoid/ws-game-server v0.0.0-20220617164939-cec20f722f88 h1:GK08fAM8r
 github.com/thzoid/ws-game-server v0.0.0-20220617164939-cec20f722f88/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
 github.com/thzoid/ws-game-server v0.0.0-20220617171957-677b938ad9df h1:lFhtIHTLf5Gl5aH8ETN0Ii7hY5wGMi3vAI6QNVrbKF4=
 github.com/thzoid/ws-game-server v0.0.0-20220617171957-677b938ad9df/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
+github.com/thzoid/ws-game-server v0.0.0-20220617183616-db64733d2c2f h1:+WsK9e1UWLQ1M0/zF/IKtgND7Tdx37w+zP6G2em+NSM=
+github.com/thzoid/ws-game-server v0.0.0-20220617183616-db64733d2c2f/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
+github.com/thzoid/ws-game-server v0.0.0-20220617184309-04cd15c3f9be h1:QjqDzsjCXBccX63nQCPFRPXE4dRN7uOCD5favBxdblw=
+github.com/thzoid/ws-game-server v0.0.0-20220617184309-04cd15c3f9be/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
+github.com/thzoid/ws-game-server v0.0.0-20220617191916-43d6a2ec6eea h1:4CSS05WiIsaZShdn8NduvSSRUg6IXgzpBV2Q5jTsA70=
+github.com/thzoid/ws-game-server v0.0.0-20220617191916-43d6a2ec6eea/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
 golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20191008105621-543471e840be/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20191120155948-bd437916bb0e/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

@@ -10,13 +10,23 @@ import (
 	"github.com/thzoid/ws-game-server/shared"
 )
 
-func renderMap(size shared.Coordinate) {
+var (
+	matchMap      *shared.Map
+	players       map[string]shared.Player
+	localPlayerID string
+)
+
+func renderMap() {
+	if matchMap == nil {
+		return
+	}
+
 	tm.MoveCursor(1, 1)
-	for i := 0; i < size.X; i++ {
-		for j := 0; j < size.Y; j++ {
+	for i := 0; i < matchMap.Size.Y; i++ {
+		for j := 0; j < matchMap.Size.X; j++ {
 			var char rune
-			if localPlayer.Actor.Position.Equals(shared.Coordinate{X: j, Y: i}) {
-				char = localPlayer.nick
+			if player, ok := players[localPlayerID]; ok && player.Position.Equals(shared.Coordinate{X: i, Y: j}) {
+				char = players[localPlayerID].Nick
 			} else {
 				char = '.'
 			}
@@ -30,7 +40,7 @@ func renderMap(size shared.Coordinate) {
 func render() {
 	tm.Clear()
 	for range time.Tick(time.Millisecond * 100) {
-		renderMap(shared.Coordinate{X: mapWidth, Y: mapHeight})
+		renderMap()
 	}
 }
 
@@ -40,6 +50,7 @@ func read() {
 		defer tty.Close()
 		for range time.Tick(time.Millisecond * 100) {
 			r, _ := tty.ReadRune()
+
 			direction := shared.Coordinate{X: 0, Y: 0}
 			switch r {
 			case 'w':
@@ -52,7 +63,9 @@ func read() {
 				direction.X = 1
 			}
 
-			localPlayer.Move(direction)
+			player := players[localPlayerID]
+			player.Move(direction)
+			players[localPlayerID] = player
 		}
 	}()
 }

@@ -6,18 +6,6 @@ import (
 	"github.com/thzoid/ws-game-server/shared"
 )
 
-const (
-	mapWidth  = 8
-	mapHeight = 30
-)
-
-var localPlayer = Player{
-	Actor: shared.Actor{
-		Position: shared.Coordinate{X: 3, Y: 2},
-	},
-	velocity: 1,
-}
-
 func main() {
 	urlPtr := flag.String("url", "ws://localhost:8080/", "server url for the player to connect")
 	nickPtr := flag.String("nick", "c", "player nick to be shown on the map")
@@ -33,5 +21,6 @@ func main() {
 		panic("player nick must be a letter or a number")
 	}
 
-	connect(*urlPtr, shared.CtS_HandshakeRequest{Nick: rune((*nickPtr)[0])})
+	go connect(*urlPtr, shared.HandshakeRequest{Nick: rune((*nickPtr)[0])})
+	render()
 }
