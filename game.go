@@ -5,6 +5,7 @@ import (
 	"time"
 
 	tm "github.com/buger/goterm"
+	"github.com/google/uuid"
 	"github.com/mattn/go-tty"
 
 	"github.com/thzoid/ws-game-server/shared"
@@ -12,23 +13,34 @@ import (
 
 var (
 	matchMap      *shared.Map
-	players       map[string]shared.Player
-	localPlayerID string
+	players       map[uuid.UUID]shared.Player
+	localPlayerID uuid.UUID
 )
 
 func renderMap() {
+	// Check if map exists
 	if matchMap == nil {
 		return
 	}
+	// Prepare player list
+	playersToRender := make([]uuid.UUID, 0, len(players))
+	for k := range players {
+		playersToRender = append(playersToRender, k)
+	}
 
+	// Render map
 	tm.MoveCursor(1, 1)
 	for i := 0; i < matchMap.Size.Y; i++ {
 		for j := 0; j < matchMap.Size.X; j++ {
-			var char rune
-			if player, ok := players[localPlayerID]; ok && player.Position.Equals(shared.Coordinate{X: i, Y: j}) {
-				char = players[localPlayerID].Nick
-			} else {
-				char = '.'
+			char := '.'
+			for k, p := range playersToRender {
+				if players[p].Position.Equals(shared.Coordinate{X: i, Y: j}) {
+					char = players[p].UserProfile.Nick
+					// Delete player from slice
+					playersToRender[k] = playersToRender[len(playersToRender)-1]
+					playersToRender = playersToRender[:len(playersToRender)-1]
+					break
+				}
 			}
 			fmt.Printf(string(char) + " ")
 		}
@@ -44,7 +56,7 @@ func render() {
 	}
 }
 
-func read() {
+func readInput() {
 	go func() {
 		tty, _ := tty.Open()
 		defer tty.Close()
@@ -64,7 +76,7 @@ func read() {
 			}
 
 			player := players[localPlayerID]
-			player.Move(direction)
+			player.Move(direction, *matchMap)
 			players[localPlayerID] = player
 		}
 	}()

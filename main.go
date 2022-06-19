@@ -21,6 +21,12 @@ func main() {
 		panic("player nick must be a letter or a number")
 	}
 
-	go connect(*urlPtr, shared.HandshakeRequest{Nick: rune((*nickPtr)[0])})
+	go connect(*urlPtr,
+		shared.HandshakeRequest{
+			UserProfile: shared.Profile{
+				Nick: rune((*nickPtr)[0]),
+			},
+		},
+	)
 	render()
 }

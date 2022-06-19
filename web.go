@@ -10,30 +10,33 @@ import (
 	"github.com/thzoid/ws-game-server/shared"
 )
 
+// Input function
 func reader(conn *websocket.Conn) {
 	for {
-		_, p, err := conn.ReadMessage()
+		m, err := shared.ReadMessage(conn)
 		if err != nil {
 			fmt.Println("server disconnected")
 			os.Exit(0)
 		}
 
-		r := &shared.Request{}
-		json.Unmarshal(p, r)
-		switch r.Type {
+		switch m.Type {
 		case "handshake":
 			// Read handshake from server
 			hsS := &shared.HandshakeResponse{}
-			json.Unmarshal(r.Body, hsS)
-			fmt.Println("handshake received.", "server map:", hsS.MatchMap)
+			json.Unmarshal(m.Body, hsS)
 
 			// Set up map size
 			matchMap = new(shared.Map)
 			*matchMap = hsS.MatchMap
-		case "move":
+		case "heartbeat":
+			// Read heartbeat from server
+			hb := &shared.HeartbeatResponse{}
+			json.Unmarshal(m.Body, hb)
 
+			// Update player list locally
+			players = hb.Players
 		default:
-			fmt.Println("message received:", string(p))
+			fmt.Println("message received:", m)
 		}
 	}
 }
@@ -48,7 +51,7 @@ func connect(url string, hs shared.HandshakeRequest) {
 	fmt.Println("connected to server")
 
 	// Send hanshake to server
-	shared.WriteRequest(conn, "handshake", hs)
+	shared.WriteMessage(conn, "handshake", hs)
 
 	// Start reading messages from server
 	reader(conn)

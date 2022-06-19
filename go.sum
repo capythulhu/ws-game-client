@@ -1,5 +1,7 @@
 github.com/buger/goterm v1.0.4 h1:Z9YvGmOih81P0FbVtEYTFF6YsSgxSUKEhf/f9bTMXbY=
 github.com/buger/goterm v1.0.4/go.mod h1:HiFWV3xnkolgrBV3mY8m0X0Pumt4zg4QhbdOzQtB8tE=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=
 github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
@@ -21,6 +23,16 @@ github.com/thzoid/ws-game-server v0.0.0-20220617184309-04cd15c3f9be h1:QjqDzsjCX
 github.com/thzoid/ws-game-server v0.0.0-20220617184309-04cd15c3f9be/go.mod h1:TDoNTNAVE8J7r8a46m/Jc5hQzo9cdlRiZyK47kIQYpU=
 github.com/thzoid/ws-game-server v0.0.0-20220617191916-43d6a2ec6eea h1:4CSS05WiIsaZShdn8NduvSSRUg6IXgzpBV2Q5jTsA70=
 github.com/thzoid/ws-game-server v0.0.0-20220617191916-43d6a2ec6eea/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
+github.com/thzoid/ws-game-server v0.0.0-20220618154051-6710821b0531 h1:bHgB4m4Nm4XDEmFaYLFfmdes2tYwKzMBO7cABu/TyMM=
+github.com/thzoid/ws-game-server v0.0.0-20220618154051-6710821b0531/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
+github.com/thzoid/ws-game-server v0.0.0-20220618154527-89f3001d3f95 h1:ihZSV0Z3uGYwx6fQatU4edK7/ySfQ4ykNUy4QKZXqpw=
+github.com/thzoid/ws-game-server v0.0.0-20220618154527-89f3001d3f95/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
+github.com/thzoid/ws-game-server v0.0.0-20220618154650-e9457e877366 h1:s1eU2/MuFN8to40GLdIiF1EnQQd2JK8DyP/BzmZxsiQ=
+github.com/thzoid/ws-game-server v0.0.0-20220618154650-e9457e877366/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
+github.com/thzoid/ws-game-server v0.0.0-20220618155604-846953c76371 h1:PcFNuq3OwWR2d+vz1rJ4P2q5U/35IQQ5lL9OhL8FLiA=
+github.com/thzoid/ws-game-server v0.0.0-20220618155604-846953c76371/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
+github.com/thzoid/ws-game-server v0.0.0-20220618162014-a281a672e359 h1:m1vcIouawweV+Sr68TOaAYgVmzfp8/Blr2BDAWdH8Q0=
+github.com/thzoid/ws-game-server v0.0.0-20220618162014-a281a672e359/go.mod h1:L8p8W+RdhGQFxAm31Kk1luvtWVc4Q3pGo/FKCXYeMY8=
 golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20191008105621-543471e840be/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20191120155948-bd437916bb0e/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

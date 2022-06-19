@@ -8,8 +8,9 @@ require (
 )
 
 require (
+	github.com/google/uuid v1.3.0
 	github.com/gorilla/websocket v1.5.0
 	github.com/mattn/go-isatty v0.0.10 // indirect
-	github.com/thzoid/ws-game-server v0.0.0-20220617191916-43d6a2ec6eea
+	github.com/thzoid/ws-game-server v0.0.0-20220618162014-a281a672e359
 	golang.org/x/sys v0.0.0-20210331175145-43e1dd70ce54 // indirect
 )
