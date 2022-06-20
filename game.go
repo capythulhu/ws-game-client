@@ -6,12 +6,14 @@ import (
 
 	tm "github.com/buger/goterm"
 	"github.com/google/uuid"
+	"github.com/gorilla/websocket"
 	"github.com/mattn/go-tty"
 
 	"github.com/thzoid/ws-game-server/shared"
 )
 
 var (
+	server        *websocket.Conn
 	matchMap      *shared.Map
 	players       map[uuid.UUID]shared.Player
 	localPlayerID uuid.UUID
@@ -34,7 +36,7 @@ func renderMap() {
 		for j := 0; j < matchMap.Size.X; j++ {
 			char := '.'
 			for k, p := range playersToRender {
-				if players[p].Position.Equals(shared.Coordinate{X: i, Y: j}) {
+				if players[p].Position.Equals(shared.Coordinate{X: j, Y: i}) {
 					char = players[p].UserProfile.Nick
 					// Delete player from slice
 					playersToRender[k] = playersToRender[len(playersToRender)-1]
@@ -75,9 +77,14 @@ func readInput() {
 				direction.X = 1
 			}
 
-			player := players[localPlayerID]
-			player.Move(direction, *matchMap)
-			players[localPlayerID] = player
+			// Move player in server
+			shared.WriteMessage(server, "move", shared.MoveRequest{Direction: direction})
+
+			// Move player locally
+			if player, ok := players[localPlayerID]; ok {
+				player.Move(direction, *matchMap)
+				players[localPlayerID] = player
+			}
 		}
 	}()
 }

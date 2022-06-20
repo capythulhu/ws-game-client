@@ -22,15 +22,18 @@ func reader(conn *websocket.Conn) {
 		switch m.Type {
 		case "handshake":
 			// Read handshake from server
-			hsS := &shared.HandshakeResponse{}
+			hsS := new(shared.HandshakeResponse)
 			json.Unmarshal(m.Body, hsS)
 
 			// Set up map size
 			matchMap = new(shared.Map)
 			*matchMap = hsS.MatchMap
+
+			// Get Player ID
+			localPlayerID = hsS.PlayerID
 		case "heartbeat":
 			// Read heartbeat from server
-			hb := &shared.HeartbeatResponse{}
+			hb := new(shared.HeartbeatResponse)
 			json.Unmarshal(m.Body, hb)
 
 			// Update player list locally
@@ -43,7 +46,8 @@ func reader(conn *websocket.Conn) {
 
 func connect(url string, hs shared.HandshakeRequest) {
 	// Connect to server
-	conn, _, err := websocket.DefaultDialer.Dial(url, http.Header{})
+	var err error
+	server, _, err = websocket.DefaultDialer.Dial(url, http.Header{})
 	if err != nil {
 		fmt.Println("could not connect to server")
 		os.Exit(0)
@@ -51,8 +55,11 @@ func connect(url string, hs shared.HandshakeRequest) {
 	fmt.Println("connected to server")
 
 	// Send hanshake to server
-	shared.WriteMessage(conn, "handshake", hs)
+	shared.WriteMessage(server, "handshake", hs)
+
+	// Read input from user
+	readInput()
 
 	// Start reading messages from server
-	reader(conn)
+	reader(server)
 }
